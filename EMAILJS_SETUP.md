@@ -1,30 +1,62 @@
 # EmailJS Setup Instructions
 
-## 1. Install EmailJS
-Run this command in your project directory:
-```bash
-npm install @emailjs/browser
+To enable direct email sending to sadeedesh499@gmail.com, follow these steps:
+
+## 1. Create EmailJS Account
+- Go to https://www.emailjs.com/
+- Sign up for a free account
+- Verify your email address
+
+## 2. Create Email Service
+- In EmailJS dashboard, go to "Email Services"
+- Click "Add New Service"
+- Choose "Gmail" (recommended)
+- Connect your Gmail account or use SMTP settings
+
+## 3. Create Email Template
+- Go to "Email Templates"
+- Click "Create New Template"
+- Use this template content:
+
+**Subject:** Hotel Inquiry from {{from_name}}
+
+**Body:**
+```
+New hotel inquiry received:
+
+Name: {{from_name}}
+Email: {{from_email}}
+
+Message:
+{{message}}
+
+---
+Sent from Grand Vista Hotel website
 ```
 
-## 2. Create EmailJS Account
-1. Go to https://www.emailjs.com/
-2. Sign up for a free account
-3. Create a new service (Gmail)
-4. Create a new email template
-5. Get your public key from the integration page
+## 4. Get Your Credentials
+- Service ID: Found in "Email Services" section
+- Template ID: Found in "Email Templates" section  
+- Public Key: Found in "Account" > "General" section
 
-## 3. Configure EmailJS
+## 5. Update the Code
 Replace these values in Contact.tsx:
-- `service_cinnemon` - Your EmailJS service ID
-- `template_contact` - Your EmailJS template ID  
-- `your_public_key` - Your EmailJS public key
+- `YOUR_PUBLIC_KEY` with your actual public key
+- `YOUR_SERVICE_ID` with your service ID
+- `YOUR_TEMPLATE_ID` with your template ID
 
-## 4. Email Template Variables
-Use these variables in your EmailJS template:
-- {{from_name}} - Sender's name
-- {{from_email}} - Sender's email
-- {{message}} - Message content
-- {{to_email}} - Your email (nevindisadeera@gmail.com)
+## 6. Test the Form
+- Fill out the contact form on your website
+- Check if emails arrive at sadeedesh499@gmail.com
+- Verify all form data is included correctly
 
-## 5. Alternative: Simple mailto fallback
-If you prefer a simpler solution, the form can use mailto links instead.
+## Free Plan Limits
+- 200 emails per month
+- No credit card required
+- Perfect for hotel contact forms
+
+## Alternative: Formspree (Simpler Setup)
+If EmailJS seems complex, you can use Formspree:
+1. Go to https://formspree.io/
+2. Create account and get form endpoint
+3. Update form action to point to Formspree endpoint
